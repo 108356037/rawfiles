@@ -11,7 +11,7 @@ sudo apt install -y bazel && \
 sudo apt install -y bazel-5.1.1
 
 # install tink
-sudo apt install -y default-jre
+sudo apt install default-jdk
 git clone https://github.com/google/tink.git
 cd tink/tools
 bazel build tinkey
