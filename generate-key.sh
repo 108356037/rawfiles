@@ -21,21 +21,3 @@ openssl pkeyutl \
         -out ./encrypted_test_use_service_key
 
 echo "Generated AES256_GCM key at ${pwd}/test_use_service_key"
-
-# cat <<EOF | ./bin/shamir combine
-#  07cfbaa1bf6982413dd52abb2578ca6373
-#  c9cc6036850debccca9dd598bebf27acd1
-#  EOF
-
-
-# a=./go-shamir/bin/shamir combine <<STDIN 
-# ${ADDR[0]}
-# ${ADDR[2]}
-# ${ADDR[1]}
-# STDIN
-
-./go-shamir/bin/shamir combine <<STDIN
-${ADDR[0]}
-${ADDR[1]}
-${ADDR[1]}
-STDIN
