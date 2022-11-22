@@ -1,6 +1,7 @@
 #!/bin/bash
 cd $HOME
 
+# capture parameters
 while [ $# -gt 0 ]; do
 
    if [[ $1 == *"--"* ]]; then
@@ -11,13 +12,16 @@ while [ $# -gt 0 ]; do
   shift
 done
 
-if [[ "$service_key" == "" ]]
+# --sek must-be passed
+if [[ "$sek" == "" ]]
 then
-  echo "Must pass in paramater --service_key!"
+  echo "Must pass in paramater --sek!"
   exit 1
 fi
 
-shares=$(cat $service_key | ./go-shamir/bin/shamir  split -t 2 -p 3)
+# split key to shares and test the shares can be combined back
+# default 2-3 scheme
+shares=$(cat $sek | ./go-shamir/bin/shamir  split -t 2 -p 3)
 readarray -t SHARE_ARR <<< "$shares"
 arraylength=${#SHARE_ARR[@]}
 for ((i=0; i<${arraylength}; i++)); do              
@@ -38,6 +42,7 @@ for ((i=0; i<${arraylength}; i++)); do
   done
 done
 
+# store the shares
 for ((i=0; i<${arraylength}; i++)); do   
   echo "Storing share to share_${i}"
   echo ${SHARE_ARR[i]} > share_${i}
