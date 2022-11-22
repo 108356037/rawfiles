@@ -46,7 +46,7 @@ done
 # store the shares
 rm -rf $HOME/shares; mkdir $HOME/shares
 for ((i=0; i<${arraylength}; i++)); do   
-  echo "Storing share to share_${i}"
+  echo "Storing share to $HOME/shares/share_${i}"
   echo ${SHARE_ARR[i]} > $HOME/shares/share_${i}
   if [[ "${?}" -ne 0 ]];
   then 
