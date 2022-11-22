@@ -40,6 +40,7 @@ for ((i=0; i<${arraylength}; i++)); do
       echo "Can construct key with share_${i} and share_${j}!"
     fi
   done
+  rm -rf testTemp
 done
 
 # store the shares
