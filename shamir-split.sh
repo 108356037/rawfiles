@@ -44,6 +44,7 @@ for ((i=0; i<${arraylength}; i++)); do
 done
 
 # store the shares
+rm -rf $HOME/shares; mkdir $HOME/shares
 for ((i=0; i<${arraylength}; i++)); do   
   echo "Storing share to share_${i}"
   echo ${SHARE_ARR[i]} > share_${i}
